@@ -1,0 +1,32 @@
+.news-page {
+  padding: 1rem;
+}
+
+.empty-icon {
+  font-size: 3rem;
+  color: #b0bec5; /* Neutral gray color */
+  margin-bottom: 1rem;
+}
+
+/* Fade-in animation for the empty state */
+.empty-state {
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+  .empty-icon {
+    color: #607d8b; /* Darker neutral gray color for dark mode */
+  }
+}

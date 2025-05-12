@@ -1,0 +1,35 @@
+:root {
+  --chess-primary: #5d4037;
+  --chess-secondary: #8d6e63;
+  --chess-accent: #3d5afe;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f8f9fa;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', serif;
+}
+
+.btn-primary {
+  background-color: var(--chess-primary);
+  border-color: var(--chess-primary);
+}
+
+.btn-primary:hover {
+  background-color: var(--chess-secondary);
+  border-color: var(--chess-secondary);
+}
+
+.nav-tabs .nav-link.active {
+  color: var(--chess-primary);
+  border-color: var(--chess-primary);
+  border-bottom-color: transparent;
+}
+
+.nav-tabs .nav-link:not(.active):hover {
+  border-color: #e9ecef #e9ecef #dee2e6;
+  isolation: isolate;
+}
