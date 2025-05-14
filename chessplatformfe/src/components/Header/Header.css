@@ -1,168 +1,104 @@
-.sidebar {
-  width: 240px;
-  background-color: #ffffff;
-  border-right: 1px solid #e5e5e5;
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+.header {
+  background-color: var(--chess-black);
+  color: var(--chess-white);
+  padding: var(--space-2) 0;
+  box-shadow: var(--shadow-md);
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
-.sidebar-nav {
-  margin-top: 2rem;
-}
-
-.nav-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.nav-item {
-  margin-bottom: 1rem;
-}
-
-.nav-button {
+.header-container {
   display: flex;
   align-items: center;
-  width: 100%;
-  padding: 1rem;
-  background-color: transparent;
-  color: #000000;
+  justify-content: space-between;
+  padding: 0 var(--space-2);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  color: var(--chess-white);
+  text-decoration: none;
+  font-weight: 700;
+  transition: opacity var(--transition-fast);
+}
+
+.logo:hover {
+  opacity: 0.9;
+  color: var(--chess-white);
+}
+
+.logo-icon {
+  font-size: 1.8rem;
+  margin-right: var(--space-1);
+}
+
+.logo-text {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+}
+
+.login-button {
+  background-color: var(--chess-accent);
+  color: white;
   border: none;
-  border-radius: 6px;
+  padding: 8px 16px;
+  border-radius: var(--radius-md);
   font-weight: 500;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: background-color var(--transition-fast);
+}
+
+.login-button:hover {
+  background-color: var(--chess-light-accent);
+}
+
+/* Animation for the login button */
+.login-button {
   position: relative;
   overflow: hidden;
 }
 
-.nav-button:hover {
-  background-color: #e5e5e5;
-}
-
-.nav-icon {
-  font-size: 1.5rem;
-  margin-right: 1rem;
-  color: #5c4033;
-}
-
-.nav-text {
-  font-size: 1rem;
-}
-
-.sidebar-footer {
-  margin-top: auto;
-  padding-top: 1rem;
-}
-
-.sidebar-footer-pattern {
-  height: 4px;
-  background-image: linear-gradient(to right,
-  #5c4033 12.5%,
-  #d2b48c 12.5%,
-  #d2b48c 25%,
-  #5c4033 25%,
-  #5c4033 37.5%,
-  #d2b48c 37.5%,
-  #d2b48c 50%,
-  #5c4033 50%,
-  #5c4033 62.5%,
-  #d2b48c 62.5%,
-  #d2b48c 75%,
-  #5c4033 75%,
-  #5c4033 87.5%,
-  #d2b48c 87.5%);
-  margin-bottom: 1rem;
-  border-radius: 2px;
-}
-
-.sidebar-footer-content {
-  display: flex;
-  align-items: center;
-  font-size: 0.8rem;
-  color: #6c757d;
-}
-
-.footer-icon {
-  font-size: 1.2rem;
-  margin-right: 0.5rem;
-  color: #5c4033;
-}
-
-/* Animation */
-.nav-button::after {
+.login-button::after {
   content: '';
   position: absolute;
-  width: 5px;
   top: 0;
-  bottom: 0;
   left: 0;
-  background-color: #007bff;
-  transform: translateX(-5px);
-  transition: transform 0.2s;
-  border-radius: 0 4px 4px 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
 }
 
-.nav-button:hover::after {
+.login-button:hover::after {
   transform: translateX(0);
 }
 
-/* Dark mode support */
-@media (prefers-color-scheme: dark) {
-  .sidebar {
-    background-color: #121212;
-    border-right-color: #444;
-  }
-
-  .nav-button {
-    color: #ffffff;
-  }
-
-  .nav-button:hover {
-    background-color: #2a2a2a;
-  }
-
-  .nav-icon {
-    color: #d2b48c;
-  }
-
-  .sidebar-footer-content {
-    color: #a0a0a0;
-  }
-}
-
-/* Responsive styles */
+/* Responsive adjustments */
 @media (max-width: 768px) {
-  .sidebar {
-    width: 100%;
-    border-right: none;
-    border-bottom: 1px solid #e5e5e5;
-    padding: 0.5rem;
+  .logo-text {
+    font-size: 1.2rem;
   }
-
-  .sidebar-nav {
-    margin-top: 0.5rem;
+  
+  .logo-icon {
+    font-size: 1.5rem;
   }
-
-  .nav-list {
-    display: flex;
-    justify-content: space-around;
-  }
-
-  .nav-button {
-    flex-direction: column;
-    align-items: center;
-    padding: 0.5rem;
-  }
-
-  .nav-icon {
-    margin-right: 0;
-    margin-bottom: 0.5rem;
-  }
-
-  .sidebar-footer {
-    display: none;
+  
+  .header-container {
+    padding: 0 var(--space-1);
   }
 }

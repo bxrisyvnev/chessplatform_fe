@@ -13,7 +13,7 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  padding: 1rem;
+  padding: var(--space-2);
   max-width: 800px;
   margin: 0 auto;
   width: 100%;
@@ -21,15 +21,18 @@
 
 .content-area {
   flex: 1;
-  padding: 1rem;
-  background-color: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  padding: var(--space-2);
+  background-color: var(--chess-white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
   overflow-y: auto;
+}
+
+/* Chess-themed subtle board pattern for content area */
+.content-area {
   position: relative;
 }
 
-/* Subtle chess board background pattern */
 .content-area::before {
   content: "";
   position: absolute;
@@ -37,31 +40,31 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-image:
-          linear-gradient(45deg, #e5e5e5 25%, transparent 25%),
-          linear-gradient(-45deg, #e5e5e5 25%, transparent 25%),
-          linear-gradient(45deg, transparent 75%, #e5e5e5 75%),
-          linear-gradient(-45deg, transparent 75%, #e5e5e5 75%);
+  background-image: 
+    linear-gradient(45deg, var(--neutral-200) 25%, transparent 25%),
+    linear-gradient(-45deg, var(--neutral-200) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, var(--neutral-200) 75%),
+    linear-gradient(-45deg, transparent 75%, var(--neutral-200) 75%);
   background-size: 40px 40px;
   background-position: 0 0, 0 20px, 20px -20px, -20px 0px;
   opacity: 0.05;
   z-index: 0;
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   pointer-events: none;
 }
 
-/* Dark mode support */
+/* Dark mode adjustments */
 @media (prefers-color-scheme: dark) {
   .content-area {
-    background-color: #1e1e1e;
+    background-color: var(--chess-light-black);
   }
-
+  
   .content-area::before {
-    background-image:
-            linear-gradient(45deg, #444 25%, transparent 25%),
-            linear-gradient(-45deg, #444 25%, transparent 25%),
-            linear-gradient(45deg, transparent 75%, #444 75%),
-            linear-gradient(-45deg, transparent 75%, #444 75%);
+    background-image: 
+      linear-gradient(45deg, var(--neutral-800) 25%, transparent 25%),
+      linear-gradient(-45deg, var(--neutral-800) 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, var(--neutral-800) 75%),
+      linear-gradient(-45deg, transparent 75%, var(--neutral-800) 75%);
   }
 }
 
@@ -70,12 +73,12 @@
   .layout-container {
     flex-direction: column;
   }
-
+  
   .main-content {
-    padding: 0.5rem;
+    padding: var(--space-1);
   }
-
+  
   .content-area {
-    padding: 0.5rem;
+    padding: var(--space-1);
   }
 }

@@ -1,11 +1,11 @@
 .articles-page {
-  padding: 1rem;
+  padding: var(--space-2);
 }
 
 .empty-icon {
   font-size: 3rem;
-  color: #9e9e9e; /* Adjusted neutral gray color */
-  margin-bottom: 1rem;
+  color: var(--neutral-400);
+  margin-bottom: var(--space-2);
 }
 
 /* Fade-in animation for the empty state */
@@ -27,6 +27,6 @@
 /* Dark mode adjustments */
 @media (prefers-color-scheme: dark) {
   .empty-icon {
-    color: #e0e0e0; /* Adjusted light gray for dark mode */
+    color: var(--neutral-600);
   }
 }
