@@ -1,15 +1,15 @@
 .sidebar {
   width: 240px;
-  background-color: #ffffff;
-  border-right: 1px solid #e0e0e0;
-  padding: 1rem;
+  background-color: var(--chess-white);
+  border-right: 1px solid var(--neutral-200);
+  padding: var(--space-2);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
 .sidebar-nav {
-  margin-top: 2rem;
+  margin-top: var(--space-4);
 }
 
 .nav-list {
@@ -19,31 +19,31 @@
 }
 
 .nav-item {
-  margin-bottom: 1rem;
+  margin-bottom: var(--space-2);
 }
 
 .nav-button {
   display: flex;
   align-items: center;
   width: 100%;
-  padding: 1rem;
+  padding: var(--space-2);
   background-color: transparent;
-  color: #333333;
+  color: var(--chess-black);
   border: none;
-  border-radius: 0.375rem;
+  border-radius: var(--radius-md);
   font-weight: 500;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color var(--transition-fast);
 }
 
 .nav-button:hover {
-  background-color: #f0f0f0;
+  background-color: var(--neutral-200);
 }
 
 .nav-icon {
   font-size: 1.5rem;
-  margin-right: 1rem;
-  color: #6a4f23; /* Adjusted to brownish color */
+  margin-right: var(--space-2);
+  color: var(--chess-dark-brown);
 }
 
 .nav-text {
@@ -52,27 +52,27 @@
 
 .sidebar-footer {
   margin-top: auto;
-  padding-top: 1rem;
+  padding-top: var(--space-2);
 }
 
 .sidebar-footer-pattern {
   height: 4px;
-  background-image: linear-gradient(to right,
-  #6a4f23 12.5%,
-  #d2b19c 12.5%,
-  #d2b19c 25%,
-  #6a4f23 25%,
-  #6a4f23 37.5%,
-  #d2b19c 37.5%,
-  #d2b19c 50%,
-  #6a4f23 50%,
-  #6a4f23 62.5%,
-  #d2b19c 62.5%,
-  #d2b19c 75%,
-  #6a4f23 75%,
-  #6a4f23 87.5%,
-  #d2b19c 87.5%);
-  margin-bottom: 1rem;
+  background-image: linear-gradient(to right, 
+    var(--chess-dark-brown) 12.5%, 
+    var(--chess-light-brown) 12.5%, 
+    var(--chess-light-brown) 25%, 
+    var(--chess-dark-brown) 25%, 
+    var(--chess-dark-brown) 37.5%, 
+    var(--chess-light-brown) 37.5%, 
+    var(--chess-light-brown) 50%, 
+    var(--chess-dark-brown) 50%, 
+    var(--chess-dark-brown) 62.5%, 
+    var(--chess-light-brown) 62.5%, 
+    var(--chess-light-brown) 75%, 
+    var(--chess-dark-brown) 75%, 
+    var(--chess-dark-brown) 87.5%, 
+    var(--chess-light-brown) 87.5%);
+  margin-bottom: var(--space-2);
   border-radius: 2px;
 }
 
@@ -80,13 +80,13 @@
   display: flex;
   align-items: center;
   font-size: 0.8rem;
-  color: #757575; /* Adjusted for neutral color */
+  color: var(--neutral-600);
 }
 
 .footer-icon {
   font-size: 1.2rem;
-  margin-right: 0.5rem;
-  color: #6a4f23; /* Adjusted to brownish color */
+  margin-right: var(--space-1);
+  color: var(--chess-dark-brown);
 }
 
 /* Animations */
@@ -102,10 +102,10 @@
   top: 0;
   bottom: 0;
   left: 0;
-  background-color: #e60000; /* Adjusted accent color */
+  background-color: var(--chess-accent);
   transform: translateX(-5px);
-  transition: transform 0.3s ease;
-  border-radius: 0 0.25rem 0.25rem 0;
+  transition: transform var(--transition-fast);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
 }
 
 .nav-button:hover::after {
@@ -115,24 +115,24 @@
 /* Dark mode adjustments */
 @media (prefers-color-scheme: dark) {
   .sidebar {
-    background-color: #212121;
-    border-right-color: #616161;
+    background-color: var(--chess-light-black);
+    border-right-color: var(--neutral-700);
   }
-
+  
   .nav-button {
-    color: #ffffff;
+    color: var(--chess-white);
   }
-
+  
   .nav-button:hover {
-    background-color: #424242;
+    background-color: var(--neutral-800);
   }
-
+  
   .nav-icon {
-    color: #d2b19c;
+    color: var(--chess-light-brown);
   }
-
+  
   .sidebar-footer-content {
-    color: #9e9e9e;
+    color: var(--neutral-400);
   }
 }
 
@@ -141,30 +141,30 @@
   .sidebar {
     width: 100%;
     border-right: none;
-    border-bottom: 1px solid #e0e0e0;
-    padding: 0.5rem;
+    border-bottom: 1px solid var(--neutral-200);
+    padding: var(--space-1);
   }
-
+  
   .sidebar-nav {
-    margin-top: 0.5rem;
+    margin-top: var(--space-1);
   }
-
+  
   .nav-list {
     display: flex;
     justify-content: space-around;
   }
-
+  
   .nav-button {
     flex-direction: column;
     align-items: center;
-    padding: 0.5rem;
+    padding: var(--space-1);
   }
-
+  
   .nav-icon {
     margin-right: 0;
-    margin-bottom: 0.5rem;
+    margin-bottom: var(--space-1);
   }
-
+  
   .sidebar-footer {
     display: none;
   }

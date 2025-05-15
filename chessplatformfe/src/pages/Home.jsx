@@ -28,7 +28,7 @@ function Home() {
         <div className="card-body">
           <h2>Getting Started</h2>
           <p className="mb-0">
-            Explore articles and news from the chess community.
+            Explore articles and news from the chess community. More features coming soon!
           </p>
         </div>
       </div>
