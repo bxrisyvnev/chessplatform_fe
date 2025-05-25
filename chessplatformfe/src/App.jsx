@@ -4,8 +4,11 @@ import Home from './pages/Home';
 import Articles from './pages/Articles';
 import News from './pages/News';
 import Login from './pages/Login';
+import Post from './pages/Post';
 import { setupAxiosInterceptors } from './services/auth';
 import './styles/App.css';
+import UpdateArticle from "./pages/UpdateArticle.jsx";
+
 
 // Setup axios interceptors for JWT
 setupAxiosInterceptors();
@@ -19,6 +22,8 @@ function App() {
           <Route index element={<Home />} />
           <Route path="articles" element={<Articles />} />
           <Route path="news" element={<News />} />
+          <Route path="post" element={<Post />} />
+          <Route path="/update-article/:id" element={<UpdateArticle />} />
         </Route>
       </Routes>
     </div>

@@ -1,10 +1,12 @@
 import { GiChessKnight, GiChessQueen, GiChessPawn } from 'react-icons/gi'
 import { FaEye } from 'react-icons/fa'
 import { useEffect, useState } from 'react'
-import { getCurrentUser } from '../../services/auth' // Adjust this path as needed
+import { getCurrentUser } from '../../services/auth'
+import { useNavigate } from 'react-router-dom'
 
 function Sidebar() {
   const [user, setUser] = useState(null)
+  const navigate = useNavigate();
 
   useEffect(() => {
     const currentUser = getCurrentUser()
@@ -25,20 +27,23 @@ function Sidebar() {
               <FaEye className="me-3" size={20} />
               <span>Spectate</span>
             </button>
-            <button className="list-group-item list-group-item-action d-flex align-items-center">
-              <GiChessQueen className="me-3" size={20} />
-              <span>Post</span>
+            <button
+                className="list-group-item list-group-item-action d-flex align-items-center"
+                onClick={() => navigate('/post')}
+              >
+                <GiChessQueen className="me-3" size={20}/>
+                <span>Post</span>
             </button>
-            {isAdmin && (
-                <button className="list-group-item list-group-item-action d-flex align-items-center text-danger">
-                  🛠 Edit Users
-                </button>
-            )}
+              {isAdmin && (
+                  <button className="list-group-item list-group-item-action d-flex align-items-center text-danger">
+                    🛠 Edit Users
+                  </button>
+              )}
           </div>
         </nav>
 
         <div className="mt-auto pt-3 border-top text-center text-muted small">
-          <GiChessPawn className="me-1" />
+          <GiChessPawn className="me-1"/>
           <span>© 2025 ChessPlatform</span>
         </div>
       </div>
