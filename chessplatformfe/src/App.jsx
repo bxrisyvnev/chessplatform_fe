@@ -5,6 +5,9 @@ import Articles from './pages/Articles';
 import News from './pages/News';
 import Login from './pages/Login';
 import Post from './pages/Post';
+import StartStream from './pages/StartStream';
+import Spectate from './pages/Spectate';
+import Stream from './pages/Stream';
 import { setupAxiosInterceptors } from './services/auth';
 import './styles/App.css';
 import UpdateArticle from "./pages/UpdateArticle.jsx";
@@ -24,6 +27,9 @@ function App() {
           <Route path="news" element={<News />} />
           <Route path="post" element={<Post />} />
           <Route path="/update-article/:id" element={<UpdateArticle />} />
+          <Route path="start-stream" element={<StartStream />} />
+          <Route path="spectate" element={<Spectate />} />
+          <Route path="streams/:id" element={<Stream />} />
         </Route>
       </Routes>
     </div>
