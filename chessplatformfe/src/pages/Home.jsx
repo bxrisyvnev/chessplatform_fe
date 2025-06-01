@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { GiChessKing, GiChessQueen } from 'react-icons/gi'
+window.global ||= window;
 
 function Home() {
   return (
