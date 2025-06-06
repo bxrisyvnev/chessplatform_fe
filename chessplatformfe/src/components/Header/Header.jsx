@@ -11,9 +11,8 @@ function Header() {
   };
 
   const handleLogoutClick = () => {
-    logout(); // Call logout to remove user from sessionStorage
-    navigate('/'); // Redirect to the home page
-    window.location.reload(); // Refresh the page
+    logout();
+    navigate('/');
   };
 
   return (
@@ -34,9 +33,9 @@ function Header() {
                 </button>
             ) : (
                 <div className="d-flex align-items-center">
-              <span className="text-light me-3">
-                Welcome, {user.username}
-              </span>
+                  <Link to="/profile" className="btn btn-outline-light me-3">
+                    {user.username}
+                  </Link>
                   <button
                       className="btn btn-outline-light"
                       onClick={handleLogoutClick}
@@ -51,4 +50,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default Header

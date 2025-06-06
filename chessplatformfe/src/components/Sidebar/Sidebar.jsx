@@ -13,7 +13,7 @@ function Sidebar() {
     setUser(currentUser)
   }, [])
 
-  const isAdmin = user?.roles?.includes('class org.example.chessplatformbe.domain.Admin');
+  const isAdmin = user?.roles?.includes('Admin');
 
   return (
       <div className="bg-light border-end h-100 p-3">
