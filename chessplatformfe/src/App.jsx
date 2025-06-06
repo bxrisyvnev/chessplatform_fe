@@ -8,6 +8,7 @@ import Post from './pages/Post';
 import StartStream from './pages/StartStream';
 import Spectate from './pages/Spectate';
 import Stream from './pages/Stream';
+import Profile from './pages/Profile';
 import { setupAxiosInterceptors } from './services/auth';
 import './styles/App.css';
 import UpdateArticle from "./pages/UpdateArticle.jsx";
@@ -30,6 +31,7 @@ function App() {
           <Route path="start-stream" element={<StartStream />} />
           <Route path="spectate" element={<Spectate />} />
           <Route path="streams/:id" element={<Stream />} />
+          <Route path="profile" element={<Profile />} />
         </Route>
       </Routes>
     </div>
