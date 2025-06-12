@@ -1,0 +1,14 @@
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ChessplatformFE
+    ports:
+      - "5173:5173"
+    networks:
+      - my-network
+
+networks:
+  my-network:
+    driver: bridge
