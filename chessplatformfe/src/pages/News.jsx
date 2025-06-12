@@ -1,6 +1,5 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { fetchOfficialNews } from '../services/newsService';
-import { useNavigate } from 'react-router-dom';
 import './News.css';
 
 const PAGE_SIZE = 5;
@@ -18,18 +17,6 @@ export default function News() {
     const [hasMoreAbove, setHasMoreAbove] = useState(true);
     const [hasMoreBelow, setHasMoreBelow] = useState(true);
 
-    const navigate = useNavigate();
-
-    // Redirect non-admins
-    useEffect(() => {
-        const userStr = sessionStorage.getItem('user');
-        const user = userStr ? JSON.parse(userStr) : null;
-        if (!user) {
-            navigate('/login', { replace: true });
-        } else if (!user.roles.includes('Admin')) {
-            navigate('/not-authorized', { replace: true });
-        }
-    }, [navigate]);
 
     // Load initial two pages
     const loadInitial = async () => {

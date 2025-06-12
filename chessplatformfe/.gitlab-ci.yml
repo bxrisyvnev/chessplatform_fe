@@ -1,0 +1,35 @@
+image: node:18
+
+stages:
+  - build
+  - test
+cache:
+  paths:
+    - node_modules/
+
+variables:
+  CI_REGISTRY: registry.git.fhict.nl
+
+build:
+  stage: build
+  script:
+    - npm ci
+    - npm run build
+  artifacts:
+    paths:
+      - dist/
+    expire_in: 1 week
+
+test:
+  stage: test
+  image:
+    name: cypress/included:14.3.3
+    entrypoint: [""]
+  variables:
+    PREVIEW_PORT: 5173
+  script:
+    - npm ci
+    - npm run build
+    - npm run preview &
+    - npx wait-on http://localhost:$PREVIEW_PORT --timeout 60000
+    - npx cypress run --config-file cypress.config.js --e2e --browser electron --headless
