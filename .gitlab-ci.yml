@@ -3,6 +3,7 @@ image: node:18
 stages:
   - build
   - test
+  - deploy
 cache:
   paths:
     - node_modules/
@@ -13,7 +14,7 @@ variables:
 build:
   stage: build
   script:
-    - npm ci
+    - npm install
     - npm run build
   artifacts:
     paths:
@@ -28,8 +29,27 @@ test:
   variables:
     PREVIEW_PORT: 5173
   script:
-    - npm ci
+    - npm install
     - npm run build
-    - npm run preview &
+    - npm run dev &
     - npx wait-on http://localhost:$PREVIEW_PORT --timeout 60000
     - npx cypress run --config-file cypress.config.js --e2e --browser electron --headless
+
+deploy:
+  stage: deploy
+  image: docker:latest
+  services:
+    - name: docker:dind
+      command: ["--host=tcp://0.0.0.0:2375"]
+  variables:
+    DOCKER_HOST: tcp://docker:2375
+    DOCKER_TLS_CERTDIR: ""
+  before_script:
+    - apk add --no-cache docker-compose
+  script:
+    - docker-compose -f docker-compose.local.yml down || true
+    - docker-compose -f docker-compose.local.yml up -d --build
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "DevelopmentBranch"'
+  tags:
+    - docker

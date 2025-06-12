@@ -1,5 +1,5 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
-import { fetchLatestArticles } from '../services/ArticleFeed';
+import { fetchLatestArticles } from '../services/articleFeed.js';
 import {
     submitComment,
     fetchCommentsByArticleId,
