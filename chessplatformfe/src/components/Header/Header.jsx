@@ -15,6 +15,10 @@ function Header() {
     navigate('/');
   };
 
+  const handleRegisterClick = () => {
+    navigate('/register');
+  };
+
   return (
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container">
@@ -23,16 +27,24 @@ function Header() {
             <span>ChessPlatform</span>
           </Link>
 
-          <div className="ms-auto">
+          <div className="ms-auto d-flex align-items-center">
             {!isAuthenticated() ? (
-                <button
-                    className="btn btn-outline-light"
-                    onClick={handleLoginClick}
-                >
-                  Log In
-                </button>
+                <>
+                  <button
+                      className="btn btn-outline-light me-2"
+                      onClick={handleLoginClick}
+                  >
+                    Log In
+                  </button>
+                  <button
+                      className="btn btn-outline-light"
+                      onClick={handleRegisterClick}
+                  >
+                    Register
+                  </button>
+                </>
             ) : (
-                <div className="d-flex align-items-center">
+                <>
                   <Link to="/profile" className="btn btn-outline-light me-3">
                     {user.username}
                   </Link>
@@ -42,7 +54,7 @@ function Header() {
                   >
                     Log Out
                   </button>
-                </div>
+                </>
             )}
           </div>
         </div>
@@ -50,4 +62,4 @@ function Header() {
   );
 }
 
-export default Header
+export default Header;

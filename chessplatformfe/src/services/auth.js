@@ -3,7 +3,6 @@ import { jwtDecode } from 'jwt-decode';
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8080';
 
-// Login and store decoded roles and user info
 export const login = async (username, password) => {
   try {
     console.log('Sending credentials:', { username, password });
@@ -18,7 +17,6 @@ export const login = async (username, password) => {
       throw new Error('Invalid access token received from the API');
     }
 
-    // ✅ Decode the token
     const decoded = jwtDecode(data.accessToken);
     const roles = decoded?.roles || [];
     const userId = decoded?.userId;
@@ -38,7 +36,29 @@ export const login = async (username, password) => {
   }
 };
 
-// Logout function
+export const register = async ({ username, password, age, displayName, nationality }) => {
+  try {
+    console.log('Registering user:', { username, age, displayName, nationality });
+    const response = await axios.post(`${API_URL}/register`, {
+      updateId: 1,
+      roles: "SPECTATOR_PLAYER",
+      username,
+      password,
+      age,
+      displayName,
+      nationality,
+      playerElo: 600,
+      isChatBanned: false,
+      isGameBanned: false,
+      noOfGamesPlayed: 0,
+      hasPass: true
+    });
+    return response.data;
+  } catch (error) {
+    throw error.response?.data || new Error('An error occurred during registration');
+  }
+};
+
 export const logout = () => {
   sessionStorage.removeItem('user');
 };

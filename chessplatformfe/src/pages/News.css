@@ -1,32 +1,16 @@
+
 .news-page {
-  padding: var(--space-2);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
-.empty-icon {
-  font-size: 3rem;
-  color: var(--neutral-400);
-  margin-bottom: var(--space-2);
+.news-scrollable {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem;
 }
 
-/* Fade-in animation for the empty state */
-.empty-state {
-  animation: fadeIn 0.5s ease;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Dark mode adjustments */
-@media (prefers-color-scheme: dark) {
-  .empty-icon {
-    color: var(--neutral-600);
-  }
+.news-card {
+  margin-bottom: 1rem;
 }
