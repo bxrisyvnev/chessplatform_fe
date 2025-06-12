@@ -39,17 +39,9 @@ deploy:
   stage: deploy
   image: docker:latest
   services:
-    - name: docker:dind
-      command: ["--host=tcp://0.0.0.0:2375"]
-  variables:
-    DOCKER_HOST: tcp://docker:2375
-    DOCKER_TLS_CERTDIR: ""
-  before_script:
-    - apk add --no-cache docker-compose
+    - docker:dind
   script:
-    - docker-compose -f docker-compose.local.yml down || true
-    - docker-compose -f docker-compose.local.yml up -d --build
+    - docker compose -f docker-compose.yml up -d --build
+    - docker ps
   rules:
-    - if: '$CI_COMMIT_BRANCH == "DevelopmentBranch"'
-  tags:
-    - docker
+    - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "DevelopmentBranch"'
