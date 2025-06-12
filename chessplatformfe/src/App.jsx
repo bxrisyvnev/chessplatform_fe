@@ -9,9 +9,11 @@ import StartStream from './pages/StartStream';
 import Spectate from './pages/Spectate';
 import Stream from './pages/Stream';
 import Profile from './pages/Profile';
+import Register from './pages/Register';
 import { setupAxiosInterceptors } from './services/auth';
 import './styles/App.css';
 import UpdateArticle from "./pages/UpdateArticle.jsx";
+import CreateNewsPage from './pages/CreateNewsPage';
 
 
 // Setup axios interceptors for JWT
@@ -22,6 +24,7 @@ function App() {
     <div className="app">
       <Routes>
         <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="articles" element={<Articles />} />
@@ -32,6 +35,7 @@ function App() {
           <Route path="spectate" element={<Spectate />} />
           <Route path="streams/:id" element={<Stream />} />
           <Route path="profile" element={<Profile />} />
+          <Route path="createnews" element={<CreateNewsPage />} />
         </Route>
       </Routes>
     </div>
