@@ -26,12 +26,6 @@ services:
 
   backend:
     image: s3-chessplatform-backend:latest
-    build:
-      context: .
-      dockerfile: Dockerfile
-      args:
-        JWT_SECRET: ${JWT_SECRET}
-        DATASOURCE_PASS: ${DATASOURCE_PASS}
     container_name: backend
     depends_on:
       - mysql
