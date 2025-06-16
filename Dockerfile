@@ -1,6 +1,12 @@
 # download a base image
 FROM node:20.11.1-alpine
 
+ARG JWT_SECRET
+ARG DATASOURCE_PASS
+
+ENV SPRING_DATASOURCE_PASSWORD=${DATASOURCE_PASS}
+ENV JWT_SECRET=${JWT_SECRET}
+
 WORKDIR /app
 
 ENV PATH /app/node_modules/.bin:$PATH

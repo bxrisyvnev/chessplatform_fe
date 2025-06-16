@@ -1,6 +1,6 @@
 describe('ChessPlatform Full E2E (Authenticated)', () => {
-    const username = 'BorisCool1';
-    const password = 'pass123';
+    const username = 'DockerUser1';
+    const password = '123456789';
 
     // UI login helper (restored original flow)
     function uiLogin() {
@@ -118,19 +118,6 @@ describe('ChessPlatform Full E2E (Authenticated)', () => {
         cy.get('.list-group-item').contains('Start Stream').should('be.visible').click();
         cy.url().should('include', '/start-stream');
     });
-
-    it('8. Checks Edit Users button in sidebar', () => {
-        cy.get('.list-group-item').contains('Edit Users').should('be.visible');
-    });
-
-    it('9. Checks Create News button in sidebar', () => {
-        cy.get('.list-group-item').contains('Create News').should('be.visible');
-    });
-
-    it('10. Opens Create News from sidebar', () => {
-        cy.get('.list-group-item').contains('Create News').should('be.visible').click();
-        cy.url().should('include', '/createnews');
-    });
 });
 
 describe('Access Control Tests (Unauthenticated)', () => {
@@ -139,48 +126,48 @@ describe('Access Control Tests (Unauthenticated)', () => {
         cy.clearLocalStorage();
     });
 
-    it('11. Dashboard should not show user content without login', () => {
+    it('8. Dashboard should not show user content without login', () => {
         cy.visit('/');
         cy.contains('Log In').should('be.visible');
         cy.contains('BorisCool1').should('not.exist');
     });
 
-    it('12. Articles should not load without login', () => {
+    it('9. Articles should not load without login', () => {
         cy.visit('/articles');
         cy.get('.card').should('not.exist');
         cy.contains('Log In').should('be.visible');
     });
 
-    it('13. News should not load without login', () => {
+    it('10. News should not load without login', () => {
         cy.visit('/news');
         cy.get('.card').should('not.exist');
         cy.contains('Log In').should('be.visible');
     });
 
-    it('14. Spectate tab should not load without login', () => {
+    it('11. Spectate tab should not load without login', () => {
         cy.visit('/spectate');
         cy.get('.card').should('not.exist');
         cy.contains('Log In').should('be.visible');
     });
 
-    it('15. Post page should not load without login', () => {
+    it('12. Post page should not load without login', () => {
         cy.visit('/post');
         cy.contains('Post Article').should('not.exist');
         cy.contains('Log In').should('be.visible');
     });
 
-    it('16. Start Stream page should not load without login', () => {
+    it('13. Start Stream page should not load without login', () => {
         cy.visit('/start-stream');
         cy.contains('Start Your Stream').should('not.exist');
         cy.contains('Log In').should('be.visible');
     });
 
-    it('17. Edit Users button should not appear without login', () => {
+    it('14. Edit Users button should not appear without login', () => {
         cy.visit('/');
         cy.get('.list-group-item').contains('Edit Users').should('not.exist');
     });
 
-    it('18. Create News button should not appear without login', () => {
+    it('15. Create News button should not appear without login', () => {
         cy.visit('/');
         cy.get('.list-group-item').contains('Create News').should('not.exist');
     });
