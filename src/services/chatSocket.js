@@ -28,7 +28,7 @@ export function connectToChat(streamId, onMessageReceived, onViewerCountUpdate) 
 export function disconnectFromChat(streamId) {
     try {
         if (stompClient && stompClient.connected) {
-            stompClient.send(`/app/stream/${streamId}/viewer/leave`, {}); // ✅ this line
+            stompClient.send(`/app/stream/${streamId}/viewer/leave`, {});
             stompClient.disconnect(() => {
                 console.log('Disconnected');
             });

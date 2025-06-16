@@ -1,7 +1,3 @@
-/// <reference types="cypress" />
-
-// Prevent uncaught exceptions from failing tests\ nCypress.on('uncaught:exception', () => false);
-
 describe('ChessPlatform Full E2E (Authenticated)', () => {
     const username = 'BorisCool1';
     const password = 'pass123';

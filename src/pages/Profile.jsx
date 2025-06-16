@@ -30,6 +30,7 @@ function Profile() {
                     <p><strong>Age:</strong> {profile.age}</p>
                     <p><strong>Display Name:</strong> {profile.displayName}</p>
                     <p><strong>Nationality:</strong> {profile.nationality}</p>
+                    <p><strong>Average received comments per Article published:</strong> {profile.averageCommentsPerArticle.toFixed(2)}</p>
 
                     {/* Admin-specific */}
                     {'monthlySalary' in profile && (
@@ -68,7 +69,7 @@ function Profile() {
 
             <div className="card">
                 <div className="card-body">
-                    <h4>User Comments</h4>
+                    <h4>Your Comments</h4>
                     {profile.comments?.length ? (
                         <ul className="list-group">
                             {profile.comments.map(c => (
