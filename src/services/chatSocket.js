@@ -2,9 +2,10 @@ import SockJS from 'sockjs-client';
 import { Stomp } from '@stomp/stompjs';
 
 let stompClient = null;
+const API_URL = import.meta.env.VITE_API_URL;
 
 export function connectToChat(streamId, onMessageReceived, onViewerCountUpdate) {
-    const socket = new SockJS('http://localhost:8080/ws');
+    const socket = new SockJS(`${API_URL}/ws`);
     stompClient = Stomp.over(socket);
 
     stompClient.connect({}, () => {

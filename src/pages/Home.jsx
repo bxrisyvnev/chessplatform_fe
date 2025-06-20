@@ -11,11 +11,6 @@ function Home() {
         <GiChessQueen size={40} className="ms-3" />
       </div>
       
-      <p className="lead mb-4">
-        The social media platform for chess enthusiasts.
-        Connect with players, share games, and stay updated with chess news.
-      </p>
-      
       <div className="d-flex justify-content-center gap-3 mb-5">
         <Link to="/articles" className="btn btn-primary">
           Browse Articles

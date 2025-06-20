@@ -1,4 +1,3 @@
-// src/pages/CreateNewsPage.jsx
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaNewspaper } from 'react-icons/fa';

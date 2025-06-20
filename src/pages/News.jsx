@@ -18,7 +18,6 @@ export default function News() {
     const [hasMoreBelow, setHasMoreBelow] = useState(true);
 
 
-    // Load initial two pages
     const loadInitial = async () => {
         setLoading(true);
         try {

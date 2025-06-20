@@ -30,7 +30,7 @@ function Post() {
                 articleTitle: title,
                 imageUrl,
                 contentText: content,
-                authorId, // Send user's ID
+                authorId,
             });
 
             setMessage('Article created successfully!');

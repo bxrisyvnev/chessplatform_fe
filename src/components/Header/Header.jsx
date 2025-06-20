@@ -12,7 +12,7 @@ function Header() {
 
   const handleLogoutClick = () => {
     logout();
-    navigate('/');
+    window.location.href = '/';
   };
 
   const handleRegisterClick = () => {
