@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8080';
+const API_URL = import.meta.env.VITE_API_URL;
 
 /**
  * Fetches the 5 latest OfficialNews items from the back-end.
@@ -82,7 +82,7 @@ export async function fetchOfficialNews(page = 0, size = 5) {
         console.log('← [newsService] raw resp.data:', resp.data);
 
         const data = resp.data || {};
-        // Prefer 'officialNews' key, then fallback to 'content' if provided
+
         const content = Array.isArray(data.officialNews)
             ? data.officialNews
             : Array.isArray(data.content)

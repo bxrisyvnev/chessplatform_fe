@@ -19,11 +19,16 @@ export default function Register() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        const ageNum = parseInt(form.age, 10);
+        if (Number.isNaN(ageNum) || ageNum <= 0) {
+            setError('You are not that young');
+            return;
+        }
         try {
             await register(form);
             navigate('/login');
-        } catch (err) {
-            setError(err.message || 'Registration failed');
+        } catch {
+            setError('Username already taken');
         }
     };
 

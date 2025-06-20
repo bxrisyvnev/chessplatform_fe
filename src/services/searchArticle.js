@@ -1,6 +1,6 @@
 // src/services/searchArticle.js
 import axios from 'axios';
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8080';
+const API_URL = import.meta.env.VITE_API_URL;
 
 /**
  * Fetches a paginated list of articles filtered by title.
