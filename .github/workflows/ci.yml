@@ -43,14 +43,18 @@ jobs:
   #        headless: true
 
   deploy:
-    runs-on: self-hosted
-    if: github.ref_name == 'DevelopmentBranch'
-    env:
-      JWT_SECRET: ${{ secrets.JWT_SECRET }}
-      DATASOURCE_PASS: ${{ secrets.DATASOURCE_PASS }}
-    steps:
-      - uses: actions/checkout@v4
-      - name: Deploy stack (mysql + existing backend image + frontend)
-        run: |
-          docker compose -p chessplatform up -d --build
-          docker ps
+  runs-on: self-hosted
+  if: github.ref_name == 'DevelopmentBranch'
+  steps:
+    - uses: actions/checkout@v4
+
+    - name: Build frontend image
+      run: |
+        docker compose -p chessplatform build frontend
+
+    - name: Restart frontend container only
+      run: |
+        docker compose -p chessplatform up -d frontend
+
+    - name: Verify
+      run: docker ps
