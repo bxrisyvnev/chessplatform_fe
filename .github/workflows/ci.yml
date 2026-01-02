@@ -44,7 +44,6 @@ jobs:
 
   deploy:
     runs-on: self-hosted
-    needs: test
     if: github.ref_name == 'DevelopmentBranch'
     env:
       JWT_SECRET: ${{ secrets.JWT_SECRET }}
