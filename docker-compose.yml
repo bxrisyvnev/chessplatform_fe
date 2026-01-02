@@ -1,17 +1,7 @@
 services:
-  frontend:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: ChessplatformFE
-    ports:
-      - "5173:5173"
-    networks:
-      - my-network
-
   mysql:
     image: mysql:8.0
-    container_name: mysql
+    container_name: chessplatform-mysql
     environment:
       MYSQL_ROOT_PASSWORD: rootpass
       MYSQL_DATABASE: chessplatform_db
@@ -25,8 +15,8 @@ services:
       - my-network
 
   backend:
-    image: s3-chessplatform-backend:latest
-    container_name: backend
+    image: s3-chessplatform-backend:latest # <-- must already exist locally on server
+    container_name: chessplatform-backend
     depends_on:
       - mysql
     ports:
@@ -37,6 +27,19 @@ services:
       SPRING_DATASOURCE_PASSWORD: ${DATASOURCE_PASS}
       JWT_SECRET: ${JWT_SECRET}
       SECURITY_JWT_SECRET: ${JWT_SECRET}
+    networks:
+      - my-network
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: s3-chessplatform_fe:latest
+    container_name: chessplatform-frontend
+    depends_on:
+      - backend
+    ports:
+      - "5173:5173"
     networks:
       - my-network
 
