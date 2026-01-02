@@ -1,35 +1,4 @@
 services:
-  mysql:
-    image: mysql:8.0
-    container_name: chessplatform-mysql
-    environment:
-      MYSQL_ROOT_PASSWORD: rootpass
-      MYSQL_DATABASE: chessplatform_db
-      MYSQL_USER: springuser
-      MYSQL_PASSWORD: ${DATASOURCE_PASS}
-    ports:
-      - "3307:3306"
-    volumes:
-      - mysql-data:/var/lib/mysql
-    networks:
-      - my-network
-
-  backend:
-    image: s3-chessplatform-backend:latest # <-- must already exist locally on server
-    container_name: chessplatform-backend
-    depends_on:
-      - mysql
-    ports:
-      - "8082:8080"
-    environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/chessplatform_db
-      SPRING_DATASOURCE_USERNAME: springuser
-      SPRING_DATASOURCE_PASSWORD: ${DATASOURCE_PASS}
-      JWT_SECRET: ${JWT_SECRET}
-      SECURITY_JWT_SECRET: ${JWT_SECRET}
-    networks:
-      - my-network
-
   frontend:
     build:
       context: .
@@ -42,10 +11,3 @@ services:
       - "5173:5173"
     networks:
       - my-network
-
-volumes:
-  mysql-data:
-
-networks:
-  my-network:
-    driver: bridge
