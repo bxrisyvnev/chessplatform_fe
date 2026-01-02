@@ -11,3 +11,7 @@ services:
       - "5173:5173"
     networks:
       - my-network
+
+networks:
+  my-network:
+    driver: bridge
