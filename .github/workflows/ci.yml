@@ -1,5 +1,9 @@
 name: Frontend CI
 
+permissions:
+  contents: read
+  packages: write
+
 on:
   push:
     branches: ["**"]
@@ -19,42 +23,48 @@ jobs:
       - name: Build
         run: npm run build
 
-  #test:
-  #  runs-on: self-hosted
-  #  needs: build
-  #  steps:
-  #    - uses: actions/checkout@v4
-  #    - uses: actions/setup-node@v4
-  #      with:
-  #        node-version: "20"
-  #        cache: "npm"
-  #    - name: Install
-  #      run: npm ci
-  #    - name: Build
-  #      run: npm run build
-  #    - name: Start dev server
-  #      run: |
-  #        npm run dev -- --host 0.0.0.0 --port 5173 &
-  #        npx wait-on http://127.0.0.1:5173 --timeout 60000
-  #    - name: Cypress e2e
-  #      uses: cypress-io/github-action@v6
-  #      with:
-  #        browser: electron
-  #        headless: true
+    #test:
+    #  runs-on: self-hosted
+    #  needs: build
+    #  steps:
+    #    - uses: actions/checkout@v4
+    #    - uses: actions/setup-node@v4
+    #      with:
+    #        node-version: "20"
+    #        cache: "npm"
+    #    - name: Install
+    #      run: npm ci
+    #    - name: Build
+    #      run: npm run build
+    #    - name: Start dev server
+    #      run: |
+    #        npm run dev -- --host 0.0.0.0 --port 5173 &
+    #        npx wait-on http://127.0.0.1:5173 --timeout 60000
+    #    - name: Cypress e2e
+    #      uses: cypress-io/github-action@v6
+    #      with:
+    #        browser: electron
+    #        headless: true
 
-  deploy:
-    runs-on: self-hosted
-    if: github.ref_name == 'DevelopmentBranch'
-    steps:
-      - uses: actions/checkout@v4
+    deploy:
+      runs-on: self-hosted
+      if: github.ref_name == 'DevelopmentBranch'
+      steps:
+        - uses: actions/checkout@v4
 
-      - name: Build frontend image
-        run: |
-          docker compose -p chessplatform build frontend
+        - name: Login to GHCR
+          run: |
+            echo "${{ secrets.GITHUB_TOKEN }}" \
+              | docker login ghcr.io -u "${{ github.actor }}" --password-stdin
 
-      - name: Restart frontend container only
-        run: |
-          docker compose -p chessplatform up -d frontend
+        - name: Build frontend image
+          run: |
+            docker build \
+              -t ghcr.io/${{ github.repository_owner }}/chessplatform-fe:latest \
+              -t ghcr.io/${{ github.repository_owner }}/chessplatform-fe:${{ github.sha }} \
+              .
 
-      - name: Verify
-        run: docker ps
+        - name: Push frontend image
+          run: |
+            docker push ghcr.io/${{ github.repository_owner }}/chessplatform-fe:latest
+            docker push ghcr.io/${{ github.repository_owner }}/chessplatform-fe:${{ github.sha }}
