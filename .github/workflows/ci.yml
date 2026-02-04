@@ -71,7 +71,7 @@ jobs:
 
       - name: Deploy frontend on home server
         run: |
-          cd /opt/chessplatform
+          cd /chessplatform
           docker compose pull frontend
           docker compose up -d --no-deps frontend
           docker image prune -f
