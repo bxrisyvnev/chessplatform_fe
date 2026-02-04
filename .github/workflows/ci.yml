@@ -48,6 +48,9 @@ jobs:
 
   deploy:
     runs-on: self-hosted
+    permissions:
+      contents: read
+      packages: write
     if: github.ref_name == 'DevelopmentBranch'
     steps:
       - uses: actions/checkout@v4
