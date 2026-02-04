@@ -63,6 +63,7 @@ jobs:
       - name: Build frontend image
         run: |
           docker build \
+            --build-arg VITE_API_URL=https://chessplatform.org \
             -t ghcr.io/${{ github.repository_owner }}/chessplatform-fe:latest \
             -t ghcr.io/${{ github.repository_owner }}/chessplatform-fe:${{ github.sha }} \
             .
