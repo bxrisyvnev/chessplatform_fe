@@ -71,7 +71,7 @@ jobs:
 
       - name: Deploy frontend on home server
         run: |
-          cd /home/boris-server/chessplatform
+          cd /home/boris/chessplatform
           docker compose pull frontend
           docker compose up -d --no-deps frontend
           docker image prune -f
